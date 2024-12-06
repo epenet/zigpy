@@ -472,7 +472,8 @@ class QuirkBuilder:
             tuple[str, str], dict[str, str]
         ] = {}
 
-        caller: FrameType = inspect.currentframe().f_back
+        current_frame: FrameType = inspect.currentframe()
+        caller: FrameType = current_frame.f_back
         self.quirk_file = pathlib.Path(caller.f_code.co_filename)
         self.quirk_file_line = caller.f_lineno
 
